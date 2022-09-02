@@ -12,6 +12,10 @@ body{
 .parpelcolor,.parpelcolor a{
     color: #5D5FEF !important;
 }
+.activeBtn{
+    background-color: #EEEFFF;
+    color: #5D5FEF ;
+}
 #navbarNav{
     justify-content: end;
 }
