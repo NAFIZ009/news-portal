@@ -41,13 +41,40 @@ const displayNewsPart=(data,catName) =>{
     const news=data.data;
     const categoryName=catName;
     displayItemCountContainer(news,categoryName);
-    displayCart(news)
+    document.getElementById("sortBarContainer").classList.remove("d-none");
+    document.getElementById("todaysPickBtn").classList.add("parpelback");
+    document.getElementById("trandingBtn").classList.remove("parpelback");
+    displayCart(news);
+    document.getElementById("trandingBtn").addEventListener("click", (e) =>{
+        [...e.target.parentElement.children].forEach((child) =>{
+            child.classList.remove("parpelback");
+        })
+        e.target.classList.add("parpelback");
+        sortingNewsByTranding(news,categoryName);
+    })
+    document.getElementById("todaysPickBtn").addEventListener("click", (e) =>{
+        [...e.target.parentElement.children].forEach((child) =>{
+            child.classList.remove("parpelback");
+        })
+        e.target.classList.add("parpelback");
+        displayCart(news);
+        displayItemCountContainer(news,categoryName);
+        
+    })
+}
+// sorting by tranding
+const sortingNewsByTranding=(news,categoryName)=>{
+    let trandingNews=news.filter((sNews)=>{
+        return sNews.others_info.is_trending==true;
+    });
+    displayCart(trandingNews);
+    displayItemCountContainer(trandingNews,categoryName,true);
 }
 // item count container
-const displayItemCountContainer=(news,categoryName)=>{
+const displayItemCountContainer=(news,categoryName,tranding=fale)=>{
     const container=document.getElementById("itemCountContainer");
     container.innerHTML=`
-    <p class="ps-3 fw-bolder fs-4 py-3 bg-white rounded">${news.length} Itmes Founds For The Category ${categoryName}</p>
+    <p class="ps-3 fw-bolder fs-4 py-3 bg-white rounded">${news.length}${tranding ? " Tranding" : ""}</p> Itmes Founds For The Category ${categoryName}</p>
     `;
 }
 // news container
