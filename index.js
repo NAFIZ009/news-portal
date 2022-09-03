@@ -168,3 +168,10 @@ const displayErr=()=>{
     const errorContainer=document.getElementById("errContainer");
     errorContainer.classList.remove("d-none");
 }
+// blogPart
+document.getElementById("blog-btn").addEventListener('click', function(e) {
+    [...document.getElementsByClassName("nav-link")].forEach((link)=>link.parentElement.classList.remove("parpelcolor"));
+    e.target.classList.add("parpelcolor");
+    document.getElementById("main-display").innerHTML='';
+})
+
