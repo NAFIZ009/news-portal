@@ -30,11 +30,11 @@ const gettingNews=(e,id,catName)=>{
     fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
     .then((res) => res.json())
     .then((data) =>displayNewsPart(data,catName))
-    loader(true)
     .catch((err)=>{
         console.error(err);
         displayErr();
     });
+    loader(true)
 }
 // news data empliment
 const displayNewsPart=(data,catName) =>{
@@ -57,7 +57,16 @@ const displayCart=(news)=>{
     if (news.length==0) {
         parentContainer.innerHTML=`<p class='container'>No News Avilable</p>`;
     }
-    console.log(news)
+    console.log(news);
+    news.sort((a,b)=>{
+        if(a.total_view>b.total_view){
+            return -1;
+        }else if(a.total_view<b.total_view){
+            return 1;
+        }else{
+            return 0;
+        }
+    })
     news.forEach((sNews)=>{
         let childContainer = document.createElement("div");
         childContainer.innerHTML=`
@@ -173,5 +182,53 @@ document.getElementById("blog-btn").addEventListener('click', function(e) {
     [...document.getElementsByClassName("nav-link")].forEach((link)=>link.parentElement.classList.remove("parpelcolor"));
     e.target.classList.add("parpelcolor");
     document.getElementById("main-display").innerHTML='';
+    displayBlogPart();
 })
 
+//display blogPart 
+const displayBlogPart =()=>{
+    const parentElement=document.getElementById("main-display");
+    const childContainer=document.createElement("div");
+    childContainer.classList.add("accordion");
+    childContainer.id="accordionExample";
+    childContainer.innerHTML=`
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Difference between Var,Let & Const? 
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared. They are all hoisted to the top of their scope. But while var variables are initialized with undefined , let and const variables are not initialized</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      Normal function vs Arrow function?
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <p>Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Uses of tamplate string
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <p>template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders).</p>
+
+      </div>
+    </div>
+  </div>
+    `
+    parentElement.appendChild(childContainer);
+}
