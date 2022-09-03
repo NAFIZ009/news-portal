@@ -241,43 +241,37 @@ const displayBlogPart =()=>{
     childContainer.classList.add("accordion");
     childContainer.id="accordionExample";
     childContainer.innerHTML=`
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Difference between Var,Let & Const? 
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <p>var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared. They are all hoisted to the top of their scope. But while var variables are initialized with undefined , let and const variables are not initialized</p>
-      </div>
+    <h1 class="fw-bold ms-3 mb-2">BLOGS</h1>
+    <div class="card border-0 mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Difference between Var,Let & Const?</h5>
+                    <p>var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared. They are all hoisted to the top of their scope. But while var variables are initialized with undefined , let and const variables are not initialized</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-      Normal function vs Arrow function?
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-      <p>Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions</p>
-      </div>
+    <div class="card border-0 mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Normal function vs Arrow function?</h5>
+                    <p>Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Uses of tamplate string
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-      <p>template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders).</p>
-
-      </div>
+    <div class="card border-0 mb-3" style="max-width: 100%;">
+        <div class="row g-0 ">
+            <div class="col">
+                <div class="card-body ">
+                    <h5 class="card-title fw-bold">Uses of tamplate string</h5>
+                    <p>template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders).</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
     `
     parentElement.appendChild(childContainer);
 }
