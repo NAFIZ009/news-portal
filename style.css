@@ -25,3 +25,9 @@ body{
 .fontSize{
     font-size: 20px;
 }
+.modal-dialog{
+    max-width: 1000px;
+}
+.moodal-img{
+    max-height: 520px !important;
+}

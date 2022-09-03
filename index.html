@@ -23,10 +23,10 @@
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav gap-2 align-items-center">
                       <li class="nav-item parpelcolor">
-                        <a class="nav-link fw-bold fs-5" href="#">News</a>
+                        <a class="nav-link fw-bold fs-5" href="index.html">News</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link fs-5" href="#">Blogs</a>
+                        <a class="nav-link fs-5" href="blog.html">Blogs</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#"><img src="img/img.jpg" class="rounded-pill" width="34px" alt=""></a>
@@ -49,6 +49,32 @@
             <!-- newsCart Part -->
             <div class="container mt-3" id="newsContainer">
 
+            </div>
+            <!-- modal Part -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-content">
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- loader -->
+            <div class="container d-flex align-items-center w-75 mt-5 text-success fw-bold d-none" id="loader">
+              <strong>Loading...</strong>
+              <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <!-- error message -->
+            <div class="container d-none" id="errContainer">
+                <p class="text-danger fw-bold fs-1">CAN'T FINDING ANY DATA</p>
             </div>
         </main>
 
