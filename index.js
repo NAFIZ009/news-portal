@@ -47,6 +47,7 @@ const displayNewsPart=(data,catName) =>{
     document.getElementById("todaysPickBtn").classList.add("parpelback");
     document.getElementById("trandingBtn").classList.remove("parpelback");
     displayCart(news);
+    // filtering according btn click
     document.getElementById("trandingBtn").addEventListener("click", (e) =>{
         [...e.target.parentElement.children].forEach((child) =>{
             child.classList.remove("parpelback");
@@ -63,6 +64,7 @@ const displayNewsPart=(data,catName) =>{
         displayItemCountContainer(news,categoryName);
         
     });
+    // filtering according dropdown btn
     dropdownBtn("DefaultBtn",()=>{
         displayCart(news);
         displayItemCountContainer(news,categoryName);
@@ -104,7 +106,7 @@ const displayCart=(news)=>{
     if (news.length==0) {
         parentContainer.innerHTML=`<p class='container'>No News Avilable</p>`;
     }
-    console.log(news);
+    // sorting news by view
     news.sort((a,b)=>{
         if(a.total_view>b.total_view){
             return -1;
