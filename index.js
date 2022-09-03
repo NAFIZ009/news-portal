@@ -65,6 +65,7 @@ const displayNewsPart=(data,catName) =>{
     });
     dropdownBtn("DefaultBtn",()=>{
         displayCart(news);
+        displayItemCountContainer(news,categoryName);
     });
     dropdownBtn("topRatedBtn",()=>{
         let editedNews=news.filter((newz)=>{
@@ -280,7 +281,12 @@ const displayBlogPart =()=>{
 }
 // dropdown btn
 const dropdownBtn=(id,cb)=>{
+
+    console.log([...document.getElementsByClassName("rightSidebtn")[0].children])
     document.getElementById(id).addEventListener("click",(e)=>{
+        [...document.getElementsByClassName("rightSidebtn")[0].children].forEach((child)=>{
+            child.classList.remove("parpelback")
+        })
         document.getElementById("dropdownMenuButton1").innerText=e.target.innerText;
         cb()
     });
