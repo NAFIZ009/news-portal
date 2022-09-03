@@ -3,6 +3,7 @@
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #F6F6F6;
+    min-height: 100vh;
 }
 .parpelback{
     background-color: #5D5FEF;
@@ -30,4 +31,7 @@ body{
 }
 .moodal-img{
     max-height: 520px !important;
+}
+.dropdown-toggle:hover{
+    color: white;
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Nafiz's Portal</title>
 </head>
-<body>
+<body class="d-flex flex-column justify-content-between">
     <div class="container">
         <!-- navbar -->
         <header>
@@ -47,9 +47,24 @@
 
             </div>
             <!-- sortBar -->
-            <div class="container mt-3 d-flex justify-content-md-end justify-content-center gap-3 d-none" id="sortBarContainer">
-              <button class="parpelback border-0 rounded " id="todaysPickBtn">Todays Pick</button>
-              <button class="border-0 rounded" id="trandingBtn">Trending</button>
+            <div class="container mt-3 d-flex flex-sm-row flex-column justify-content-between gap-3 d-none" id="sortBarContainer">
+              <div class="leftSideBtn d-flex gap-2 align-items-center">
+                <span>Sort By View:</span>
+                <div class="dropdown">
+                  <button class="btn parpelback dropdown-toggle fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Default
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" id="DefaultBtn" href="#">Default</a></li>
+                    <li><a class="dropdown-item" id="topRatedBtn" href="#">Top Rated</a></li>
+                    <li><a class="dropdown-item" id="TPBtn" href="#">Today's Pick</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="rightSidebtn">
+                <button class="parpelback border-0 rounded " id="todaysPickBtn">All News</button>
+                <button class="border-0 rounded" id="trandingBtn">Trending</button>
+              </div>
             </div>
             <!-- newsCart Part -->
             <div class="container mt-3" id="newsContainer">
@@ -82,11 +97,12 @@
                 <p class="text-danger fw-bold fs-1">CAN'T FINDING ANY DATA</p>
             </div>
         </main>
-
-        <!-- <footer class="position-absolute bottom-0 start-50 translate-middle">
-          <h6 class="text-center fw-bold">COPYRIGHT 2022 <br> JALA AHMED NAFIZ</h6>
-        </footer> -->
     </div>
+
+    <footer class="fw-bold d-flex flex-column justify-content-center align-items-center mt-5">
+      <h5>COPYRIGHT 2022</h5>
+      <h6>JALAL AHMED NAFIZ</h6>
+    </footer>
     <!-- font awsome -->
     <script src="https://kit.fontawesome.com/23c828fab0.js" crossorigin="anonymous"></script>
     <!-- bootstrap -->

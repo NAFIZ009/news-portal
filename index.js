@@ -6,6 +6,7 @@ const gettingCategory=()=>{
     .catch((err)=>{
         console.error(err);
         displayErr();
+        loader(false);
     })
 }
 gettingCategory();
@@ -31,8 +32,9 @@ const gettingNews=(e,id,catName)=>{
     .then((res) => res.json())
     .then((data) =>displayNewsPart(data,catName))
     .catch((err)=>{
-        console.error(err);
+        console.log(err);
         displayErr();
+        loader(false);
     });
     loader(true)
 }
@@ -60,6 +62,23 @@ const displayNewsPart=(data,catName) =>{
         displayCart(news);
         displayItemCountContainer(news,categoryName);
         
+    });
+    dropdownBtn("DefaultBtn",()=>{
+        displayCart(news);
+    });
+    dropdownBtn("topRatedBtn",()=>{
+        let editedNews=news.filter((newz)=>{
+            return newz.rating.badge=="Excellent"
+        })
+        displayCart(editedNews);
+        displayItemCountContainer(editedNews,categoryName);
+    });
+    dropdownBtn("TPBtn",()=>{
+        let editedNews=news.filter((newz)=>{
+            return newz.others_info.is_todays_pick==true;
+        })
+        displayCart(editedNews);
+        displayItemCountContainer(editedNews,categoryName);
     })
 }
 // sorting by tranding
@@ -71,10 +90,10 @@ const sortingNewsByTranding=(news,categoryName)=>{
     displayItemCountContainer(trandingNews,categoryName,true);
 }
 // item count container
-const displayItemCountContainer=(news,categoryName,tranding=fale)=>{
+const displayItemCountContainer=(news,categoryName,tranding=false)=>{
     const container=document.getElementById("itemCountContainer");
     container.innerHTML=`
-    <p class="ps-3 fw-bolder fs-4 py-3 bg-white rounded">${news.length}${tranding ? " Tranding" : ""}</p> Itmes Founds For The Category ${categoryName}</p>
+    <p class="ps-3 fw-bolder fs-4 py-3 bg-white rounded">${news.length}${tranding ? " Tranding" : ""} Itmes Founds For The Category ${categoryName}</p>
     `;
 }
 // news container
@@ -151,6 +170,7 @@ const newsDetailFetch=(id)=>{
     .catch((err)=>{
         console.error(err);
         displayErr();
+        loader(false);
     });
 }
 // modal display
@@ -211,7 +231,6 @@ document.getElementById("blog-btn").addEventListener('click', function(e) {
     document.getElementById("main-display").innerHTML='';
     displayBlogPart();
 })
-
 //display blogPart 
 const displayBlogPart =()=>{
     const parentElement=document.getElementById("main-display");
@@ -258,4 +277,11 @@ const displayBlogPart =()=>{
   </div>
     `
     parentElement.appendChild(childContainer);
+}
+// dropdown btn
+const dropdownBtn=(id,cb)=>{
+    document.getElementById(id).addEventListener("click",(e)=>{
+        document.getElementById("dropdownMenuButton1").innerText=e.target.innerText;
+        cb()
+    });
 }
