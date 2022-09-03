@@ -23,7 +23,6 @@ const placingCategory =(data)=>{
 }
 // news data fetch
 const gettingNews=(e,id,catName)=>{
-    // e.target.classList.toggle("activeBtn");
     fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
     .then((res) => res.json())
     .then((data) =>displayNewsPart(data,catName))
@@ -32,7 +31,6 @@ const gettingNews=(e,id,catName)=>{
 const displayNewsPart=(data,catName) =>{
     const news=data.data;
     const categoryName=catName;
-    console.log(news);
     displayItemCountContainer(news,categoryName);
     displayCart(news)
 }
@@ -40,7 +38,7 @@ const displayNewsPart=(data,catName) =>{
 const displayItemCountContainer=(news,categoryName)=>{
     const container=document.getElementById("itemCountContainer");
     container.innerHTML=`
-    <p class="ps-3 fw-bolder fs-4 py-3 bg-light rounded">${news.length} Itmes Founds For The Category ${categoryName}</p>
+    <p class="ps-3 fw-bolder fs-4 py-3 bg-white rounded">${news.length} Itmes Founds For The Category ${categoryName}</p>
     `;
 }
 // news container
@@ -50,28 +48,30 @@ const displayCart=(news)=>{
     news.forEach((sNews)=>{
         let childContainer = document.createElement("div");
         childContainer.innerHTML=`
-        <div class="card mb-3" style="max-width: 100%;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="${sNews.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+        <div class="card mb-4 border-0 rounded shadow" style="max-width: 100%;">
+            <div class="row py-3 g-0">
+                <div class="col-md-3 d-flex justify-content-center">
+                    <img src="${sNews.thumbnail_url}" class="img-fluid rounded-start " alt="...">
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title fs-5 fw-bolder">${sNews.title}</h5>
+                <div class="col-md-9">
+                    <div class="card-body d-flex flex-column gap-3">
+                        <h5 class="card-title fs-3 fw-bolder">${sNews.title}</h5>
                         <p class="card-text">${sNews.details.length > 400 ? `${sNews.details.slice(0,400)}...` : `${sNews.details}`}</p>
-                        <div class='row'>
-                            <div class="col d-flex ">
+                        <div class='row align-items-center'>
+                            <div class="col d-flex align-items-center gap-3">
                                 <div>
                                     <img src="${sNews.author.img}" class="rounded-pill" width="50px" alt="...">
                                 </div>
-                                <div class="d-flex flex-column align-items-baseline justify-contant-center">
-                                    <p class="fw-bold">${sNews.author.name ? `${sNews.author.name}` : `Not Available`}</p>
-                                    <p>${sNews.author.published_date ? `${sNews.author.published_date}` : `Not Available`}</p>
+                                <div class="d-flex flex-column justify-content-center mt-3">
+                                    <p class="fw-bold mb-0">${sNews.author.name ? `${sNews.author.name}` : `Not Available`}</p>
+                                    <p class="mt-1">${sNews.author.published_date ? `${sNews.author.published_date}` : `Not Available`}</p>
                                 </div>
                             </div>
-                            <div class="col"><i class="fa-solid fa-eye"></i> ${sNews.total_view}</div>
-                            <div class="col">${ratings(sNews.rating.number)}<i class="fa-solid fa-star-half"></i></div>
-                            <div class="col"></div>
+                            <div class="col d-flex justify-content-center align-items-center gap-2 fontSize"><i class="fa-solid fa-eye"></i> ${sNews.total_view ? `${sNews.total_view}` : `No View`}</div>
+                            <div class="col d-flex justify-content-center fontSize">${ratings(sNews.rating.number)}<i class="fa-solid fa-star-half"></i></div>
+                            <div class="col d-flex justify-content-end fontSize">
+                                  <i class="fa-solid fa-arrow-right me-5 fw-bold"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ const displayCart=(news)=>{
       parentContainer.appendChild(childContainer);
     })
 }
-
+// ratings star
 const ratings=(data)=>{
     let count=data.toString()[0];
     let parent=document.createElement('div');
